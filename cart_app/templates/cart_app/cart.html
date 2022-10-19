@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load cart_tag %}
+
+{% block content %}
+  
+  <!--================Home Banner Area =================-->
+  <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>Cart Products</h2>
+              <p>Home <span>-</span>Cart Products</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+  <!--================Cart Area =================-->
+  <section class="cart_area padding_top">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for key,value in request.session.cart.items %}
+                <tr>
+                <td>
+                  <div class="media">
+                    <div class="d-flex">
+                      <img src="{{ value.image }}" alt="" height="150" width="150" />
+                    </div>
+                    <div class="media-body">
+                      <p>{{ value.name }}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h5>${{ value.price }}</h5>
+                </td>
+                <td>
+                  <div class="product_count">
+                    <a href="{% url 'cart:item_decrement' value.product_id %}" class="input-number-decrement"> <i class="ti-angle-down"></i></a>
+                    <input class="input-number" type="text" value="{{ value.quantity }}" min="0" max="10">
+                    <a href="{% url 'cart:item_increment' value.product_id %}" class="input-number-increment"> <i class="ti-angle-up"></i></a>
+                  </div>
+                </td>
+                <td>
+                  <h5>${{ value.price|multiply:value.quantity }}</h5>
+                </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="checkout_btn_inner float-right">
+            <a class="btn_1" href="{% url 'products:products' %}">Continue Shopping</a>
+            <a class="btn_1 checkout_btn_1" href="{% url 'order:order' %}">Proceed to checkout</a>
+            <a class="btn_1" href="{% url 'cart:cart_clear' %}">Empty your cart</a>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!--================End Cart Area =================-->
+
+{% endblock %}

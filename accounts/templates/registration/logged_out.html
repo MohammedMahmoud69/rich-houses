@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="login_part padding_top">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="mx-auto">
+        <div class="login_part_text text-center">
+          <div class="login_part_text_iner">
+            <p>Logged out!</p>
+            <a href="{% url 'login'%}">Click here to login again.</a>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

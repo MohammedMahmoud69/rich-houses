@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <h2>About Us</h2>
+                            <p>Home<span>-</span>About Us</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+
+    
+    {% for about_us in about_us %}
+
+        <section class="our_offer section_padding">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="offer_img">
+                            <img src="{{ about_us.image.url }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="offer_text">
+                            <h2>{{ about_us.title }}</h2>
+                            <div class="date_countdown">
+                                <div id="timer">
+                                    {{ about_us.subject }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    {% endfor about_us %}
+        
+
+
+{% endblock content %}

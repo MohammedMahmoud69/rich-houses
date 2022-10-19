@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Rich Houses</h2>
+                            <p>
+                                Debitis deserunt illum illo.
+                                <br>
+                                Recusandae sapiente enim natus
+                                <br>
+                                animi itaque molestiae doloremque. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+
+    <!-- product_list start-->
+    <section class="product_list section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section_tittle text-center">
+                        <h2>best seller <span>shop</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product_list_slider owl-carousel">
+                        <div class="single_product_list_slider">
+                            <div class="row align-items-center justify-content-between">
+                              
+                              {% for product in products_by_price %}
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single_product_item">
+                                        <img src="{{ product.image.url }}" alt="" width="450" height="350">
+                                        <div class="single_product_text">
+                                            <h4>{{ product.name }}</h4>
+                                            <h3>EGP{{ product.price }}</h3>
+                                            <a href="{% url 'cart:cart_add' product.id %}" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                              {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product_list part start-->
+
+    <!-- awesome_shop start-->
+    <section class="our_offer section_padding">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-md-6">
+                    <div class="offer_img">
+                        <img src="{% static 'img/offer_img.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="offer_text">
+                        <h2>About As</h2>
+                        <div class="date_countdown">
+                            <div id="timer">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis deserunt illum illo. Recusandae sapiente enim natus animi itaque molestiae doloremque. Commodi quisquam voluptatibus reiciendis recusandae, autem non facere voluptates doloremque?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- awesome_shop part start-->
+
+    <!-- product_list start-->
+    <section class="product_list section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section_tittle text-center">
+                        <h2>new products <span>shop</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product_list_slider owl-carousel">
+                        <div class="single_product_list_slider">
+                            <div class="row align-items-center justify-content-between">
+                              
+                              {% for product in products_by_date %}
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single_product_item">
+                                        <img src="{{ product.image.url }}" alt="" width="450" height="350">
+                                        <div class="single_product_text">
+                                            <h4>{{ product.name }}</h4>
+                                            <h3>EGP{{ product.price }}</h3>
+                                            <a href="{% url 'cart:cart_add' product.id %}" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                              {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product_list part start-->
+
+{% endblock content %}

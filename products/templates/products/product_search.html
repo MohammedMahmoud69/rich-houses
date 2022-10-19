@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!--================Home Banner Area =================-->
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Shop</h2>
+                            <p>Home <span>-</span> Shop</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!--================Category Product Area =================-->
+    <section class="cat_product_area section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="product_top_bar d-flex justify-content-between align-items-center">
+                                <div class="single_product_menu">
+                                    <p><span>{{ product_search|length }} </span> Prodict Found</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center latest_product_inner">
+                      
+                      {% for product in product_search %}
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="single_product_item">
+                                <img src="{{ product.image.url }}" alt="" height="300" width="250" >
+                                <div class="single_product_text">
+                                    <a href="{% url 'products:product' product.slug %}" >{{ product.name }}</a>
+                                    <br>
+                                    <h3>${{ product.price }}</h3>
+                                    <a href="{% url 'cart:cart_add' product.id %}" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Category Product Area =================-->
+
+{% endblock content %}

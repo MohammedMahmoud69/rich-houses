@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load cart_tag %}
+
+{% block content %}
+  
+  <!--================Home Banner Area =================-->
+  <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>Producta Checkout</h2>
+              <p>Home <span>-</span> Producta Checkout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+  <!--================Checkout Area =================-->
+  <section class="checkout_area padding_top">
+    <div class="container">
+      <div class="cupon_area">
+        <div class="check_title">
+        </div>
+      </div>
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <h3>Billing Details</h3>
+            <form class="row contact_form" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" name="address" placeholder="Address line 01" />
+                
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" name="city" placeholder="city"/>
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" name="zip" placeholder="Postcode/ZIP" />
+              </div>
+              <input type="submit" class="btn_3 button-contactForm" value="send message">
+            </form>
+          </div>
+          <div class="col-lg-4">
+            <div class="order_box">
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  <a href="#">Product
+                    <span>Total</span>
+                  </a>
+                </li>
+                
+                {% for key,value in request.session.cart.items %}
+                  <li>
+                    <a>{{ value.name }}
+                      <span class="middle">x {{ value.quantity }}</span>
+                      <span class="last">${{ value.price }}</span>
+                    </a>
+                  </li>
+                  <ul class="list list_2">
+                    <li>
+                      <a href="#">Sub Total
+                        <span>${{ value.price|multiply:value.quantity }}</span>
+                      </a>
+                    </li>
+                  </ul>
+                {% endfor %}  
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+
+{% endblock content %}
