@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'cart_app'
 
+# cart actions urls
 urlpatterns = [
     path('add/<int:id>/', views.cart_add, name='cart_add'),
     path('add_list/<int:id>/', views.cart_add_detail, name='cart_add_detail'),

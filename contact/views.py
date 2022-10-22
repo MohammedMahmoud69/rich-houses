@@ -3,6 +3,7 @@ from .forms import Message_Form
 # Create your views here.
 
 
+# contact form view
 def contact(request):
     
     if request.method == 'POST':

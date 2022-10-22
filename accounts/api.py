@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from .serializers import ProfileSerializer, UserSerializer
 from rest_framework import generics
 
-# profile apis views
 
 # profile list api view
 class Profile_List_Api(generics.ListAPIView):
@@ -16,8 +15,6 @@ class Profile_Detail_Api(generics.RetrieveAPIView):
     serializer_class = ProfileSerializer
     lookup_field = 'id'
 
-
-# user apis views
 
 # user list api view
 class User_List_Api(generics.ListAPIView):

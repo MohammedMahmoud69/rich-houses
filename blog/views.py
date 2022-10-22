@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from .models import Blog
-# Create your views here.
 
+
+# blog list view
 
 def blog_list(request):
     blog_list = Blog.objects.all()
 
     return render(request , 'blog/blog_list.html' , context={'blogs':blog_list})
+
+# blog search view
 
 def blog_search(request):
     keyword = request.GET.get("search")

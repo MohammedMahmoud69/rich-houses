@@ -1,15 +1,13 @@
-from cmath import log
 from django.shortcuts import render , redirect
 from .models import Profile
 from .forms import SignupForm , ProfileForm , UserForm
 from django.contrib.auth import authenticate , login
 from django.contrib.auth.decorators import login_required
-from orders.models import Order
-from django.contrib.auth.models import User
 # Create your views here.
 
 
 
+# register view
 
 def register(request):
     if request.method == 'POST': 
@@ -34,8 +32,18 @@ def register(request):
     return render(request, 'accounts/signup.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
+# profile view
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    profile = Profile.objects.get(user=request.user)
+
+    return render(request , 'accounts/profile.html' , context={'profile':profile})
 
 
+
+
+# profile edit view
 
 @login_required(login_url='/accounts/login/')
 def profile_edit(request):
@@ -58,13 +66,3 @@ def profile_edit(request):
         profileform = ProfileForm(instance=profile)
 
     return render(request,'accounts/profile_edit.html',{'userform':userform , 'profileform':profileform})
-
-
-
-
-
-@login_required(login_url='/accounts/login/')
-def profile(request):
-    profile = Profile.objects.get(user=request.user)
-
-    return render(request , 'accounts/profile.html' , context={'profile':profile})
