@@ -14,6 +14,7 @@ def cart_add_detail(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product)
+    return redirect('products:products')
 
 # item clear view
 def item_clear(request, id):

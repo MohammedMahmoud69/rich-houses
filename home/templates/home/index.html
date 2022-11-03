@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-  
+
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
         <div class="container">
@@ -16,7 +16,7 @@
                                 <br>
                                 Recusandae sapiente enim natus
                                 <br>
-                                animi itaque molestiae doloremque. 
+                                animi itaque molestiae doloremque.
                             </p>
                         </div>
                     </div>
@@ -42,14 +42,15 @@
                     <div class="product_list_slider owl-carousel">
                         <div class="single_product_list_slider">
                             <div class="row align-items-center justify-content-between">
-                              
+
                               {% for product in products_by_price %}
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="single_product_item">
-                                        <img src="{{ product.image.url }}" alt="" width="450" height="350">
+                                        <img src="{{ product.image.url }}" alt="" height="300" width="250" >
                                         <div class="single_product_text">
-                                            <h4>{{ product.name }}</h4>
-                                            <h3>EGP{{ product.price }}</h3>
+                                            <a href="{% url 'products:product' product.slug %}" >{{ product.name }}</a>
+                                            <br>
+                                            <h3>${{ product.price }}</h3>
                                             <a href="{% url 'cart:cart_add' product.id %}" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
                                         </div>
                                     </div>
@@ -104,7 +105,7 @@
                     <div class="product_list_slider owl-carousel">
                         <div class="single_product_list_slider">
                             <div class="row align-items-center justify-content-between">
-                              
+
                               {% for product in products_by_date %}
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="single_product_item">

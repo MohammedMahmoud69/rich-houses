@@ -3,8 +3,8 @@
 
 
 {% block content %}
-  
-  
+
+
   <!-- breadcrumb start-->
   <section class="breadcrumb breadcrumb_bg">
     <div class="container">
@@ -46,7 +46,7 @@
                   <span>Category</span> : {{ product.category }}</a>
               </li>
             </ul>
-            <p>{{ product.describtion }}</p>
+            <p>{{ product.description }}</p>
             <div class="card_area d-flex justify-content-between align-items-center">
               <a href="{% url 'cart:cart_add_detail' product.id %}" class="btn_3">add to cart</a>
             </div>
